@@ -1,0 +1,30 @@
+<form (submit)="addTask()" #taskForm="ngForm">
+    <label>Título:</label>
+    <input [(ngModel)]="newTask.title" name="title" required>
+    <br>
+    <label>Prioridad:</label>
+    <select [(ngModel)]="newTask.priority" name="priority" required>
+      <option value="Baja">Baja</option>
+      <option value="Media">Media</option>
+      <option value="Alta">Alta</option>
+    </select>
+    <br>
+    <label>Fecha de vencimiento:</label>
+    <input type="date" [(ngModel)]="newTask.dueDate" name="dueDate" required>
+    <div *ngIf="taskForm.controls['dueDate']?.invalid && taskForm.controls['dueDate']?.touched">
+      <p>Fecha de vencimiento es requerida.</p>
+    </div>
+    <br>
+    <label>Recordatorio:</label>
+    <input type="checkbox" [(ngModel)]="newTask.reminder" name="reminder">
+    <br>
+    <button type="submit" [disabled]="taskForm.invalid">Agregar tarea</button>
+  </form>
+
+  
+  
+  
+  
+  
+  
+  
