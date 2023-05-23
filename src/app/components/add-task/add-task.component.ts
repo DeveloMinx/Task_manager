@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-task',
@@ -38,6 +39,13 @@ export class AddTaskComponent implements OnInit {
   addTask(): void {
     this.taskService.addTask(this.newTask);
     this.resetForm();
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Saved task',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
   /**

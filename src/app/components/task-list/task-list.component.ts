@@ -4,9 +4,11 @@ import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+// Import the sweetalert2 library
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-task-list',
@@ -33,7 +35,24 @@ export class TaskListComponent implements OnInit {
    * @param task The task to be deleted
    */
   deleteTask(task: Task): void {
-    this.taskService.deleteTask(task);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.taskService.deleteTask(task);
+        Swal.fire(
+          'Deleted!',
+          'The task has been deleted.',
+          'success'
+        )
+      }
+    })
   }
 
   ngOnInit() {
@@ -60,6 +79,7 @@ export class TaskListComponent implements OnInit {
   markTaskAsCompleted(task: Task): void {
     task.completed = true;
     this.taskService.updateTask(task);
+    Swal.fire('Task done')
   }
 
   /**
