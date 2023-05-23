@@ -1,12 +1,17 @@
 <ul>
   <li *ngFor="let task of tasks$ | async" [ngClass]="{ 'completed-task': task.completed, 'pending-task': !task.completed }">
-    {{ task.title }} (Prioridad: {{ task.priority }})
-    <button (click)="deleteTask(task)">Eliminar</button>
-    <button (click)="markTaskAsCompleted(task)">Marcar como realizada</button>
+    {{ task.title }} (Priority: {{ task.priority }})
+
+    
+    <button *ngIf="userLoggedIn" (click)="deleteTask(task)">Delete</button>
+    <button *ngIf="userLoggedIn" (click)="markTaskAsCompleted(task)">Mark as done</button>
   </li>
 </ul>
 
 
 
+<div *ngIf="!userLoggedIn" class="message">
+  <h3>Sign in to access more options <span> <a href="/login">Login</a></span></h3>
+</div>
 
 

@@ -4,5 +4,5 @@ export interface Task {
   priority: string;
   dueDate: Date | null;
   reminder: boolean;
-  completed: boolean; // Agrega la propiedad 'completed' al modelo
+  completed: boolean; 
 }

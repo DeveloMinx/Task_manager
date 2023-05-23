@@ -11,24 +11,43 @@ export class TaskService {
   tasks: Observable<Task[]>;
 
   constructor(private firestore: AngularFirestore) {
+    // Initialize the tasks collection with Firestore
     this.tasksCollection = this.firestore.collection<Task>('tasks');
+
+    // Retrieve the tasks as an observable
     this.tasks = this.tasksCollection.valueChanges({ idField: 'id' });
   }
 
-  getTasks() {
+  /**
+   * Get all tasks
+   * @returns Observable<Task[]>
+   */
+  getTasks(): Observable<Task[]> {
     return this.tasks;
   }
 
-  addTask(task: Task) {
+  /**
+   * Add a new task
+   * @param task The task to be added
+   */
+  addTask(task: Task): void {
     this.tasksCollection.add(task);
   }
 
-  updateTask(task: Task) {
+  /**
+   * Update an existing task
+   * @param task The task to be updated
+   */
+  updateTask(task: Task): void {
     const taskDoc = this.tasksCollection.doc(task.id);
     taskDoc.update(task);
   }
 
-  deleteTask(task: Task) {
+  /**
+   * Delete a task
+   * @param task The task to be deleted
+   */
+  deleteTask(task: Task): void {
     const taskDoc = this.tasksCollection.doc(task.id);
     taskDoc.delete();
   }

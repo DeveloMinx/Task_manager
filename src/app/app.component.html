@@ -1,6 +1,19 @@
-<h1>Tareas</h1>
+<!-- The heading for the tasks -->
+<h1>Tasks</h1>
+
+<!-- Logout button (displayed only if userLoggedIn is true) -->
+<div *ngIf="userLoggedIn" class="col-md-3 text-end">
+  <button type="button" class="btn btn-outline-primary me-2" (click)="logOut()">Logout</button>   
+</div>
+
+<!-- Navigation menu -->
 <nav>
-  <a routerLink="/">Lista de tareas</a>
-  <a routerLink="/add-task">Agregar tarea</a>
+  <!-- Link to the task list page -->
+  <a routerLink="/">Task list</a>
+  
+  <!-- Link to the add task page -->
+  <a routerLink="/add-task">Add task</a>
 </nav>
+
+<!-- Placeholder for the routed components -->
 <router-outlet></router-outlet>

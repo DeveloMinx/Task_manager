@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-task-list',
@@ -10,26 +15,57 @@ import { TaskService } from '../../services/task.service';
 })
 export class TaskListComponent implements OnInit {
   tasks$: Observable<Task[]>;
+  userLoggedIn: boolean = false;
 
-  constructor(private taskService: TaskService) {
+  constructor(
+    private taskService: TaskService,
+    private fb: FormBuilder,
+    private afAuth: AngularFireAuth,
+    private toastr: ToastrService,
+    private router: Router,
+  ) {
+    // Initialize the tasks observable
     this.tasks$ = this.taskService.getTasks();
   }
 
-  deleteTask(task: Task) {
+  /**
+   * Delete a task
+   * @param task The task to be deleted
+   */
+  deleteTask(task: Task): void {
     this.taskService.deleteTask(task);
   }
 
-
   ngOnInit() {
+    // Get tasks on component initialization
     this.getTasks();
+
+    // Subscribe to the authentication state changes
+    this.afAuth.authState.subscribe(user => {
+      this.userLoggedIn = !!user;
+    });
   }
 
-  private getTasks() {
+  /**
+   * Fetch the tasks from the service and assign them to tasks$
+   */
+  private getTasks(): void {
     this.tasks$ = this.taskService.getTasks();
   }
 
-  markTaskAsCompleted(task: Task) {
+  /**
+   * Mark a task as completed
+   * @param task The task to be marked as completed
+   */
+  markTaskAsCompleted(task: Task): void {
     task.completed = true;
-    this.taskService.updateTask(task); // Guardar el cambio en Firebase
+    this.taskService.updateTask(task);
+  }
+
+  /**
+   * Log out the user
+   */
+  logOut(): void {
+    this.afAuth.signOut().then(() => this.router.navigate(['/']));
   }
 }

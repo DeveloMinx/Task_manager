@@ -1,34 +1,53 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.scss']
 })
-export class AddTaskComponent {
+export class AddTaskComponent implements OnInit {
   newTask: Task = {
     id: '',
     title: '',
-    priority: 'Baja',
+    priority: 'Low',
     dueDate: null,
     reminder: false,
     completed: false
   };
 
-  constructor(private taskService: TaskService) {}
+  userLoggedIn: boolean = false;
 
-  addTask() {
+  constructor(
+    private taskService: TaskService,
+    private afAuth: AngularFireAuth,
+  ) { }
+
+  ngOnInit(): void {
+    // Check if the user is logged in
+    this.afAuth.authState.subscribe(user => {
+      this.userLoggedIn = !!user; 
+    });
+  }
+
+  /**
+   * Add a new task
+   */
+  addTask(): void {
     this.taskService.addTask(this.newTask);
     this.resetForm();
   }
 
-  resetForm() {
+  /**
+   * Reset the task form
+   */
+  resetForm(): void {
     this.newTask = {
       id: '',
       title: '',
-      priority: 'Baja',
+      priority: 'Low',
       dueDate: null,
       reminder: false,
       completed: false
