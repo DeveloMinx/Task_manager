@@ -1,0 +1,44 @@
+.logout{
+    position: absolute;
+    top: 43px;
+    right: 10%;
+}
+.logo-task img{
+    height: 60px;
+    transition: all 0.5s;
+}
+.logo-task img:hover{
+height: 65px;
+}
+.logout button{
+    border: solid 2px white;
+    color: white;
+}
+
+.logout button:hover{
+     background-color: rgb(57, 99, 69);
+}
+.navbar{
+    background-color: rgb(36, 59, 51);
+}
+.item-task:hover{
+    color: white;
+    font-weight: bold;
+}
+
+
+
+
+@media screen and (min-width:992px){
+    .nav-item {
+    line-height:80px;
+    }
+    
+  }
+  @media screen and (max-width:992px){
+    .logout{
+        position: absolute;
+        right: 30%;
+    }
+    
+  }

@@ -1,19 +1,37 @@
-<!-- The heading for the tasks -->
-<h1>Tasks</h1>
+<nav class="navbar navbar-expand-lg navbar-dark p-3 " id="headerNav">
+  <div class="container-fluid">
+    <a class="navbar-brand d-block d-lg-none" href="#">
+      <img src="../assets/task2.png" height="60" alt="Task" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<!-- Logout button (displayed only if userLoggedIn is true) -->
-<div *ngIf="userLoggedIn" class="col-md-3 text-end">
-  <button type="button" class="btn btn-outline-primary me-2" (click)="logOut()">Logout</button>   
-</div>
+    <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mx-auto ">
+        <li class="nav-item  item-task" >
+          <a class="nav-link mx-2" routerLink="/">Task List</a>
+        </li>
+        <li class="nav-item d-none d-lg-block">
+          <a class="nav-link mx-2 logo-task" href="#" >
+            <img src="../assets/task2.png" alt="Task" />
+          </a>
+        </li>
+        <li class="nav-item item-task">
+          <a class="nav-link mx-2" routerLink="/add-task" href="#">Add Task</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-<!-- Navigation menu -->
-<nav>
-  <!-- Link to the task list page -->
-  <a routerLink="/">Task list</a>
-  
-  <!-- Link to the add task page -->
-  <a routerLink="/add-task">Add task</a>
+  <div *ngIf="userLoggedIn" class="col-md-3 text-end  logout"> 
+    <button type="button" class="btn btn-outline-primary me-2" (click)="logOut()">Logout</button>   
+  </div>
+
 </nav>
+
+
+
 
 <!-- Placeholder for the routed components -->
 <router-outlet></router-outlet>

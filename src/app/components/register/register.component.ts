@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
   /**
    * Register a new user
    */
-  registrar(): void {
+  singup(): void {
     const email = this.registrarUsuario.value.email;
     const password = this.registrarUsuario.value.password;
     const repetirPassowrd = this.registrarUsuario.value.repetirPassword;

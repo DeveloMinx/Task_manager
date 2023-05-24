@@ -1,24 +1,33 @@
-<div class="wrapper">
-    <div *ngIf="!loading" class="body">
-        <img class="logo" src="../../../assets/img/login.png" alt="Login">
-        <h2>Register here</h2>
-        <form (ngSubmit)="registrar()" [formGroup]="registrarUsuario">
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" formControlName="email" placeholder="name@example.com">
-                <label>Email</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" formControlName="password" placeholder="Password">
-                <label>Password</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" formControlName="repetirPassword" placeholder="Repetir Password">
-                <label>Repeat password</label>
-            </div>
-            <div class="d-grid gap-2 mb-3">
-                <button class="btn btn-primary btn-lg" [disabled]="registrarUsuario.invalid" type="submit">Accept</button>
-            </div>           
+
+<div class="login-container">
+	<div *ngIf="!loading" class="center">
+		<h1>Sing Up</h1>
+		<form (ngSubmit)="singup()" [formGroup]="registrarUsuario">
+		  <div class="inputbox">
+			<input type="email" formControlName="email" required="required">
+			<span>Email</span>
+		  </div>
+		  <div class="inputbox">
+			<input type="password" formControlName="password"  required="required">
+			<span>Password</span>
+		  </div>
+          <div class="inputbox">
+			<input type="password" formControlName="repetirPassword"  required="required">
+			<span>Repeat password</span>
+		  </div>
+		  <div class="button">
+			<button class="btn" >Sing up</button>
+		  </div>
+          <div class="rutas">
             <a routerLink="/login">Return</a>
-        </form>
-    </div>
+        </div>
+		</form>
+	  </div>
 </div>
+
+
+
+
+
+
+

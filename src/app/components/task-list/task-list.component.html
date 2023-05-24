@@ -1,13 +1,33 @@
-<ul>
-  <li *ngFor="let task of tasks$ | async" [ngClass]="{ 'completed-task': task.completed, 'pending-task': !task.completed }">
-    {{ task.title }} (Priority: {{ task.priority }})
+<div class="table-container">
+<table class="table table-striped" >
+  <thead>
+    <tr>
+      <th scope="col">Activity</th>
+      <th scope="col">Priority</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks$ | async">
+      <th>{{task.title}}</th>
+      <td>{{task.priority}}</td>
+      <td>{{task.dueDate}}</td>
+      <td> 
+        <div class="status-container">
+          <div [ngClass]="{ 'completed-task': task.completed, 'pending-task': !task.completed }"></div>
+        </div>
+      </td>
+      <td>
+        <button *ngIf="userLoggedIn" (click)="deleteTask(task)">Delete</button>
+        <button *ngIf="userLoggedIn" (click)="markTaskAsCompleted(task)">Mark as done</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    
-    <button *ngIf="userLoggedIn" (click)="deleteTask(task)">Delete</button>
-    <button *ngIf="userLoggedIn" (click)="markTaskAsCompleted(task)">Mark as done</button>
-  </li>
-</ul>
-
+</div>
 
 
 <div *ngIf="!userLoggedIn" class="message">

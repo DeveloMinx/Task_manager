@@ -30,7 +30,7 @@ export class RecoverPasswordComponent implements OnInit {
   /**
    * Recover password for the user
    */
-  recuperar(): void {
+  recover(): void {
     const email = this.recuperarUsuario.value.correo;
 
     this.loading = true;
