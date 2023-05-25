@@ -14,6 +14,26 @@ This is a task management application developed with Angular and Firebase. It al
 - **Task Status:** Tasks can be marked as completed, helping users track their progress.
 - **Integration with Firebase:** Firebase is used as the backend for data storage and user authentication.
 
+## Design Pattern
+
+The application follows the **Model-View-Controller (MVC)** design pattern, which separates the concerns of data manipulation (Model), user interface (View), and business logic (Controller). This promotes maintainability, scalability, and reusability of code.
+
+## Programming Paradigms
+
+The application utilizes the following programming paradigms:
+
+- **Object-Oriented Programming (OOP):** OOP principles are employed to organize code into objects with encapsulated data and behavior, promoting modularity and code reuse.
+- **Reactive Programming:** Reactive programming concepts using RxJS are utilized for handling asynchronous operations, managing streams of data, and event-based programming.
+
+## Directives
+
+Angular's directives are leveraged to enhance the functionality and interactivity of the application. The following directives are utilized:
+
+- **ngIf:** Used to conditionally display elements based on specific conditions, such as showing or hiding task details.
+- **ngFor:** Employed to iterate over collections and generate repetitive elements, such as displaying a list of tasks.
+- **ngModel:** Used for two-way data binding, allowing seamless synchronization between the user interface and the underlying data model.
+
+
 ## Project Setup
 
 1. Clone the GitHub repository to your local machine.
