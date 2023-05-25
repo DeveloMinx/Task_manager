@@ -4,9 +4,9 @@ import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-import { FormBuilder} from '@angular/forms';
+
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+
 // Import the sweetalert2 library
 import Swal from 'sweetalert2'
 
@@ -17,16 +17,14 @@ import Swal from 'sweetalert2'
 })
 export class TaskListComponent implements OnInit {
   tasks$: Observable<Task[]>;
-  userLoggedIn: boolean = false;
+  isEmailVerified: boolean = false;
+
 
   constructor(
     private taskService: TaskService,
-    private fb: FormBuilder,
     private afAuth: AngularFireAuth,
-    private toastr: ToastrService,
     private router: Router,
   ) {
-    // Initialize the tasks observable
     this.tasks$ = this.taskService.getTasks();
   }
 
@@ -60,9 +58,10 @@ export class TaskListComponent implements OnInit {
     this.getTasks();
 
     // Subscribe to the authentication state changes
-    this.afAuth.authState.subscribe(user => {
-      this.userLoggedIn = !!user;
+    this.afAuth.authState.subscribe(authState => {
+      this.isEmailVerified = authState?.emailVerified ?? false;
     });
+  
   }
 
   /**

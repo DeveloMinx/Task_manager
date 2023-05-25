@@ -19,7 +19,7 @@ export class AddTaskComponent implements OnInit {
     completed: false
   };
 
-  userLoggedIn: boolean = false;
+  isEmailVerified: boolean = false;
 
   constructor(
     private taskService: TaskService,
@@ -28,8 +28,8 @@ export class AddTaskComponent implements OnInit {
 
   ngOnInit(): void {
     // Check if the user is logged in
-    this.afAuth.authState.subscribe(user => {
-      this.userLoggedIn = !!user; 
+    this.afAuth.authState.subscribe(authState => {
+      this.isEmailVerified = authState?.emailVerified ?? false;
     });
   }
 

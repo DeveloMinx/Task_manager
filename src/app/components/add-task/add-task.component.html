@@ -1,4 +1,4 @@
-<div *ngIf="userLoggedIn" class="add-task-container">
+<div *ngIf="isEmailVerified" class="add-task-container">
   <div class="add-tas-conten-container">
     <form  (submit)="addTask()" #taskForm="ngForm">
 
@@ -37,7 +37,7 @@
   </div>
 </div>
 
-  <div *ngIf="!userLoggedIn" class="message">
+  <div *ngIf="!isEmailVerified" class="message">
     <h3>Sign in to access more options  <span> <a href="/login">Login</a></span></h3>
   </div>
   

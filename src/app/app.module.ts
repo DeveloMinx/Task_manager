@@ -18,6 +18,7 @@ import { AngularFireModule } from '@angular/fire/compat'; // Importa el módulo 
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -29,7 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
     VerifyUserComponent,
     RecoverPasswordComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,7 @@
+
+@import "src/assets/scss/colors.scss";
+
+
 .logout{
     position: absolute;
     top: 43px;
@@ -16,10 +20,10 @@ height: 65px;
 }
 
 .logout button:hover{
-     background-color: rgb(57, 99, 69);
+     background-color: $hover-color;
 }
 .navbar{
-    background-color: rgb(36, 59, 51);
+    background-color: $primary-color;
 }
 .item-task:hover{
     color: white;

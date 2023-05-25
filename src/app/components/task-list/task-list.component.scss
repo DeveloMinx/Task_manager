@@ -1,3 +1,6 @@
+
+
+
 .table{
   width: 700px;
 }
@@ -32,6 +35,7 @@ td,th{
     background-color: green;
     content: 'Task done';
     font-weight: bold;
+    color: aliceblue;
   }
   
   .pending-task::before {
@@ -39,6 +43,7 @@ td,th{
     background-color: red;
     content: 'Task incomplete';
     font-weight: bold;
+    color: aliceblue;
   }
   td button{
     border: none;

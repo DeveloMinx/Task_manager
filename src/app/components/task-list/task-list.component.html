@@ -1,12 +1,12 @@
 <div class="table-container">
-<table class="table table-striped" >
+<table  class="table table-striped" >
   <thead>
     <tr>
       <th scope="col">Activity</th>
       <th scope="col">Priority</th>
       <th scope="col">Due Date</th>
       <th scope="col">Status</th>
-      <th *ngIf="userLoggedIn" scope="col">Actions</th>
+      <th *ngIf="isEmailVerified" scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -19,7 +19,7 @@
           <div [ngClass]="{ 'completed-task': task.completed, 'pending-task': !task.completed }"></div>
         </div>
       </td>
-      <td *ngIf="userLoggedIn">
+      <td *ngIf="isEmailVerified" >
         <button  (click)="deleteTask(task)">Delete</button>
         <button  (click)="markTaskAsCompleted(task)">Mark as done</button>
       </td>
@@ -30,7 +30,7 @@
 </div>
 
 
-<div *ngIf="!userLoggedIn" class="message">
+<div *ngIf="!isEmailVerified"  class="message">
   <h3>Sign in to access more options <span> <a href="/login">Login</a></span></h3>
 </div>
 

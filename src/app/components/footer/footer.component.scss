@@ -1,0 +1,22 @@
+@import "src/assets/scss/colors.scss";
+
+.footer-container{
+    background-color: $primary-color;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 120px;
+}
+.footer{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer p{
+    color: aliceblue;
+}
+.footer p a{
+    text-decoration: none;
+    color: aliceblue;
+}
