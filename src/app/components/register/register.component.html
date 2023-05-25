@@ -4,15 +4,15 @@
 		<h1>Sing Up</h1>
 		<form (ngSubmit)="singup()" [formGroup]="registrarUsuario">
 		  <div class="inputbox">
-			<input type="email" formControlName="email" required="required">
+			<input type="email" formControlName="email" required="required" title="email">
 			<span>Email</span>
 		  </div>
 		  <div class="inputbox">
-			<input type="password" formControlName="password"  required="required">
+			<input type="password" formControlName="password"  required="required" title="password">
 			<span>Password</span>
 		  </div>
           <div class="inputbox">
-			<input type="password" formControlName="repetirPassword"  required="required">
+			<input type="password" formControlName="repetirPassword"  required="required" title="Repeat password">
 			<span>Repeat password</span>
 		  </div>
 		  <div class="button">

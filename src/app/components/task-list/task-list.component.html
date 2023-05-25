@@ -6,7 +6,7 @@
       <th scope="col">Priority</th>
       <th scope="col">Due Date</th>
       <th scope="col">Status</th>
-      <th scope="col">Actions</th>
+      <th *ngIf="userLoggedIn" scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -19,9 +19,9 @@
           <div [ngClass]="{ 'completed-task': task.completed, 'pending-task': !task.completed }"></div>
         </div>
       </td>
-      <td>
-        <button *ngIf="userLoggedIn" (click)="deleteTask(task)">Delete</button>
-        <button *ngIf="userLoggedIn" (click)="markTaskAsCompleted(task)">Mark as done</button>
+      <td *ngIf="userLoggedIn">
+        <button  (click)="deleteTask(task)">Delete</button>
+        <button  (click)="markTaskAsCompleted(task)">Mark as done</button>
       </td>
     </tr>
   </tbody>

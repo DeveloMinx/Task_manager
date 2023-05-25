@@ -1,0 +1,22 @@
+
+.verify-user-container{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+.verify-user-container img{
+    width: 120px;
+}
+.verify-button-container button{
+    width: 120px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(35, 88, 64);
+}
+.verify-button-container button:hover{
+    color: aliceblue;
+    background-color: rgb(53, 122, 91);
+}

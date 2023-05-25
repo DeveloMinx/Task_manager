@@ -39,5 +39,24 @@ td,th{
     background-color: red;
     content: 'Task incomplete';
     font-weight: bold;
-
   }
+  td button{
+    border: none;
+    border-radius: 10px;
+  }
+  td button:nth-child(1){
+   background-color: rgb(187, 60, 60);
+  }
+  td button:nth-child(2){
+    margin-left: 5px;
+    background-color: rgb(40, 107, 66);
+   }
+
+   td button:nth-child(1):hover{
+    color: aliceblue;
+    background-color: rgb(218, 72, 72);
+   }
+   td button:nth-child(2):hover{
+    color: aliceblue;
+    background-color: rgb(54, 145, 89);
+   }
